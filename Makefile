@@ -12,3 +12,9 @@ spelling:	$(OBJ)
 clean:
 	rm -rf spelling
 	rm -rf $(OBJ)
+
+### Dependencies
+main.o:	main.c include/spelling.h include/spelling/suggestion.h \
+	include/spelling/dict.h
+dict.o:	dict.c include/spelling.h include/spelling/dict.h
+suggestion.o:	suggestion.c include/spelling.h include/spelling/suggestion.h

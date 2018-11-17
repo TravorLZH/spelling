@@ -9,7 +9,10 @@ This program currently supports:
 * Checking words from `argv[]'
 * Checking words from an internal command line
 * Giving suggestion to words
-
-Features that remain beta are listed below:
-
 * Adding unknown words to dictionary
+* Deleting words from dictionary
+
+Future Directions:
+
+* Check spelling from a file
+* Learning new words (AI stuff)

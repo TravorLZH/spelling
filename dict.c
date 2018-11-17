@@ -36,15 +36,28 @@ bye:
 	return 0;
 }
 
+int dict_delete(char *word)
+{
+	int i=dict_check(word);
+	if(i>=0){
+		dict[i].name[0]='\0';
+		return 0;
+	}
+	return -1;
+}
+
 int dict_check(char *word)
 {
 	int i;
 	for(i=0;i<dicts;i++){
+		if(dict[i].name[0]=='\0'){
+			continue;
+		}
 		if(!strcmp(dict[i].name,word)){
-			return 1;
+			return i;
 		}
 	}
-	return 0;
+	return -1;
 }
 
 
@@ -57,6 +70,9 @@ int dict_close(void)
 		exit(1);
 	}
 	for(i=0;i<dicts;i++){
+		if(dict[i].name[0]=='\0'){
+			continue;
+		}
 		fprintf(file,"%s\n",dict[i].name);
 	}
 	fprintf(file,"#\n");

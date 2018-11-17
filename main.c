@@ -32,7 +32,7 @@ int do_word(char *word)
 		tmp[i]=tolower(word[i]);
 	}
 	tmp[i]='\0';
-	if(!dict_check(tmp)){
+	if(dict_check(tmp)<0){
 		flag=1;
 		len=provide_suggestions(tmp,sug,10);
 		printf("%s: ",word);
@@ -49,22 +49,27 @@ int do_word(char *word)
 		for(i=0;i<len;i++){
 			printf("\t%d. %s",i+1,sug[i].name);
 		}
-		putchar('\n');
+		printf("\nOr add to dictionary [y/n]");
+		gets(buf);
+		if(tolower(buf[0])=='y'){
+			dict_add(tmp);
+		}
 	}
 	return flag;
 }
 
 int main(int argc,char **argv)
 {
-	int i,len;
+	int i,len,flag;
 	char *tmp=NULL;
 	dict_init(DICT_FILENAME);
 	/* If there are words in the argument */
 	if(argc>1){
 		for(i=1;i<argc;i++){
-			if(!do_word(argv[i])){
-				puts("No problem");
-			}
+			flag=do_word(argv[i]);
+		}
+		if(!flag){
+			puts("No problem");
 		}
 		return 0;
 	}
@@ -73,6 +78,10 @@ check_words:
 	gets(buf);
 	if(buf[0]=='#'){
 		goto bye;
+	}
+	if(buf[0]=='!'){
+		dict_delete(&buf[1]);
+		goto check_words;
 	}
 	len=strlen(buf);
 	tmp=strtok(buf," ");

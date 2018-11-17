@@ -1,3 +1,10 @@
+2018-11-17 20:42 Dictionary Manipulation
+
+Two features are implemented:
+
+1. Deletion of words by preceeding `!'
+2. Adding words to dictionary
+
 2018-11-17 18:35 Add sources
 
 Descriptions can be found in `README' file

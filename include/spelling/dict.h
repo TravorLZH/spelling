@@ -12,5 +12,6 @@ extern int dict_init(char *filename);
 extern int dict_check(char *word);
 extern int dict_close(void);
 extern int dict_add(char *word);
+extern int dict_delete(char *word);
 
 #endif
