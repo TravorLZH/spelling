@@ -1,0 +1,15 @@
+Spelling Checker
+================
+
+This spelling checker derives from the solution to POJ 1035 in which the program
+is supposed to correct spelling mistakes according to a given dictionary.
+
+This program currently supports:
+
+* Checking words from `argv[]'
+* Checking words from an internal command line
+* Giving suggestion to words
+
+Features that remain beta are listed below:
+
+* Adding unknown words to dictionary
